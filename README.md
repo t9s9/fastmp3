@@ -64,6 +64,20 @@ out = np.empty(shape=(probe.samples, probe.channel), dtype=np.float32)
 _decode_mp3_array(raw, out)
 ```
 
+### Unpack bits
+The package includes also a function for unpacking values of an unit8 array to bits. This is useful for decoding label
+information. This function is similar to the `unpackbits` function of NumPy, but it is faster.
+
+```python
+import numpy as np
+from fastmp3 import unpackbits
+
+arr = np.array([1, 3, 8], dtype=np.uint8)
+bits = unpackbits(arr)
+# bits: array([0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 1 0 0 0], dtype=uint8)
+```
+
+
 ## Benchmarks
 <p align="center">
 
